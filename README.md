@@ -2,52 +2,47 @@
 🧠 AI Multidimensional Memory Visualization System  
 🚀 Powered by EverMemOS Architecture
 
-## 📖 Project Introduction
-Memory-Genesis is a visualized frontend interface for an AI multidimensional memory system, designed to display the construction process of memory and the logic of intelligent memory retrieval.  
+## 📖 Project Status & Introduction
+Memory-Genesis is a static frontend demo for an AI multidimensional memory system, designed to visualize the workflow of memory generation, storage, and retrieval aligned with EverMemOS standards.  
 
-This demo strictly adheres to the design specifications and memory schema of EverMemOS (https://github.com/EverMind-AI/EverMemOS). We have completed all the design work for engineering integration, and will connect to the official EverMemOS backend in subsequent iterations to enable real memory operation capabilities.
+### Current Completion Status
+| Module                          | Completion | Description                                                                 |
+|---------------------------------|------------|-----------------------------------------------------------------------------|
+| Core Role Definition            | 0%         | Multi-agent roles (generator/deducer/manager) not implemented yet           |
+| Multi-agent Interaction         | 0%         | No interaction logic between agents                                         |
+| Model API Integration           | 0%         | No connection to EverMemOS/LLM API                                          |
+| Backend Storage & Deduction     | 0%         | No backend storage or memory deduction capabilities                         |
+| Frontend Visualization          | 100%       | Static HTML demo (index.html) deployed on Cloudflare Pages                  |
 
-## 🔗 Live Demo (Online Preview)
-Experience the static visualization demo (index.html) directly in your browser:  
+## 🔗 Live Demo (Static Frontend Only)
+Access the static HTML demo (index.html) directly:  
 https://memory-genesis.pages.dev/
 
-## 🔧 System Architecture
+## 🔧 System Architecture (Design Only)
 ### Core Workflow (Aligned with EverMemOS)
 User Dialogue → Structured Memory Extraction (MemCell) → Memory Storage → Multi-Strategy Retrieval → Dialogue Response
 
-### Engineering Design (Completed & To Be Implemented)
-| Module                | Status                  | Key Details                                                                 |
-|-----------------------|-------------------------|-----------------------------------------------------------------------------|
-| EverMemOS API Integration | Design Completed       | Aligned with EverMemOS OpenAPI specs; data format mapping finalized         |
-| Backend Storage       | Design Completed       | PostgreSQL + Redis schema defined (time/content/role/relevance score fields)|
-| Role-based Deduction  | Design Completed       | 3 core roles (User/Assistant/Admin) with access control rules               |
-| AI API Integration    | Design Completed       | LLM wrapper for memory extraction (compatible with EverMemOS LLM)            |
-
-## ✨ Core Features (Frontend Demo - index.html)
-- Intuitive visual dialogue interface for memory interaction
-- Multidimensional memory panel displaying EverMemOS-style structured memory units
-- Simulated memory storage/retrieval process (matching EverMemOS workflow)
-- Lightweight static HTML implementation (index.html, zero backend dependency)
-- Cloudflare Pages deployment (memory-genesis.pages.dev) for fast global access
+### Planned Multi-Agent Design
+1. **Memory Generator Agent**: Generate structured memory from user input (to connect with EverMemOS API)
+2. **Memory Deducer Agent**: Analyze memory relevance and deduction (to implement with LLM API)
+3. **Memory Manager Agent**: Coordinate agents and manage memory lifecycle (to connect with backend storage)
 
 ## 🖥 Quick Start (Run index.html Locally)
-This is a static frontend demo with no backend requirements:
+This is a static frontend demo with ZERO backend/API dependencies:
 1. Clone the repository: `git clone https://github.com/MyraWang0406/Memory-Genesis.git`
-2. Navigate to the repository folder: `cd Memory-Genesis`
-3. Open `index.html` directly in any modern browser (Chrome/Firefox/Safari)
-4. Interact with the interface to preview memory visualization
+2. Navigate to the folder: `cd Memory-Genesis`
+3. Open `index.html` in any modern browser (Chrome/Firefox/Safari)
 
-## 📌 Future Roadmap (EverMemOS Integration)
-### Short-term (2-3 Weeks)
-- Complete EverMemOS API connection for real memory extraction
-- Implement SQLite-based lightweight memory storage (minimum viable version)
-### Mid-term (1-2 Months)
-- Deploy PostgreSQL + Redis for production-level memory storage
-- Enable role-based memory access control (User/Admin separation)
-### Long-term (2+ Months)
-- Integrate LLM API for dynamic memory generation
-- Add quantitative evaluation metrics (aligned with EverMemOS benchmarks)
-- Support multi-modal memory (text/image/audio)
+## 📌 Future Development Roadmap
+### Short-Term (2-3 Weeks)
+- Integrate with EverMemOS official API for memory extraction
+- Implement basic SQLite storage for memory data
+### Mid-Term (1-2 Months)
+- Add multi-agent interaction logic (generator ↔ deducer ↔ manager)
+- Connect to LLM API for dynamic memory generation/deduction
+### Long-Term (2+ Months)
+- Enable multi-agent collaboration for complex memory deduction
+- Add quantitative evaluation metrics (EverMemOS benchmarks)
 
 ## 📄 License
 This project is open-source under the Apache 2.0 License (consistent with EverMemOS licensing).
