@@ -13,6 +13,7 @@ import { MemoWhatIf } from './MemoWhatIf'
 import { GoBoard } from './GoBoard'
 import { RegretModal } from './RegretModal'
 import { searchMemories, isEverMemOSEnabled, syncDaySummary, syncWhatIf } from '../services/evermemos'
+import { getMockScenario } from '../services/mockDemoService'
 import { DecisionReviewModal } from './DecisionReviewModal'
 import { AdvicePanel } from './AdvicePanel'
 
@@ -28,13 +29,29 @@ function FutureReminderBanner({ lang, profileId }: { lang: Lang; profileId: stri
   const T = getText(lang)
   const [searching, setSearching] = useState(false)
   const [similarMemories, setSimilarMemories] = useState<unknown[]>([])
+  const [mockData, setMockData] = useState<ReturnType<typeof getMockScenario>>(null)
+  
+  const params = new URLSearchParams(window.location.search)
+  const demoKey = params.get('demo')
+  const isDemo = !!demoKey && ['effort', 'path', 'protect'].includes(demoKey)
+
   const regrets = loadRegrets(profileId)
-  if (regrets.length === 0) return null
+  if (regrets.length === 0 && !isDemo) return null
 
   const handleSimulate = async () => {
-    if (!profileId) return
     setSearching(true)
     setSimilarMemories([])
+    setMockData(null)
+    
+    if (isDemo) {
+      // Demo mode: artificial delay then show mock data
+      await new Promise(r => setTimeout(r, 800))
+      setMockData(getMockScenario(demoKey, lang))
+      setSearching(false)
+      return
+    }
+
+    if (!profileId) { setSearching(false); return }
     try {
       const res = await searchMemories(profileId, '过去类似场景的内耗或冲动决策与触发场景', { memoryTypes: ['event_log', 'episodic_memory'], topK: 5 })
       if (res.ok && res.memories) setSimilarMemories(Array.isArray(res.memories) ? res.memories : [])
@@ -83,6 +100,44 @@ function FutureReminderBanner({ lang, profileId }: { lang: Lang; profileId: stri
           </div>
           <AdvicePanel lang={lang} compact />
         </>
+      )}
+      {mockData && (
+        <div style={{ marginTop: '0.75rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+          <div style={{ padding: '0.75rem', background: 'white', borderRadius: 8, border: '1px solid rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>
+              {lang === 'zh' ? '过去对话' : 'Past Dialogue'}
+            </div>
+            <div style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--text)' }}>{mockData.pastDialogue}</div>
+          </div>
+          <div style={{ padding: '0.75rem', background: 'white', borderRadius: 8, border: '1px solid rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>
+              {lang === 'zh' ? '提取记忆' : 'Extracted Memory'}
+            </div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text)' }}>{mockData.extractedMemory}</div>
+          </div>
+          <div style={{ padding: '0.75rem', background: 'rgba(0,0,0,0.02)', borderRadius: 8, border: '1px dashed rgba(0,0,0,0.1)' }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>
+              {lang === 'zh' ? '隐藏背景' : 'Hidden Context'}
+            </div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{mockData.hiddenContext}</div>
+          </div>
+          <div style={{ padding: '0.75rem', background: 'rgba(74,144,226,0.05)', borderRadius: 8, borderLeft: '3px solid var(--primary)' }}>
+            <div style={{ fontSize: '0.7rem', fontWeight: 700, color: 'var(--primary)', marginBottom: '0.25rem', textTransform: 'uppercase' }}>
+              {lang === 'zh' ? '识别模式' : 'Inferred Pattern'}
+            </div>
+            <div style={{ fontSize: '0.85rem', color: 'var(--text)' }}>{mockData.inferredPattern}</div>
+          </div>
+          <AdvicePanel 
+            lang={lang} 
+            compact 
+            content={{ 
+              fa: mockData.coachResponse,
+              shi: lang === 'zh' ? '基于当时生态位与资源的必然选择' : 'Inevitable choice based on ecosystem and resources',
+              qing: lang === 'zh' ? '接纳当时的自我保护本能' : 'Accept the self-protection instinct at that time',
+              ren: lang === 'zh' ? '看清系统性影响而非个人缺失' : 'See systemic impact rather than personal lack'
+            }} 
+          />
+        </div>
       )}
     </div>
   )
