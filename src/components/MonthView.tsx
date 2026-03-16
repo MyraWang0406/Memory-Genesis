@@ -44,7 +44,7 @@ export function MonthView({ date, lang, profileId }: Props) {
     <div className="month-view" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <EmotionRecord score={draftMood} lang={lang} onChange={setDraftMood} />
       <MemoWhatIf entries={draftTimeline} lang={lang} onEntriesChange={setDraftTimeline} hasProfile={false} />
-      <MemoEventList startDate={format(start, 'yyyy-MM-dd')} endDate={format(end, 'yyyy-MM-dd')} label="本月事件" />
+      <MemoEventList startDate={format(start, 'yyyy-MM-dd')} endDate={format(end, 'yyyy-MM-dd')} label={lang === 'zh' ? '本月事件' : 'Monthly Events'} lang={lang} />
       <GoBoard scores={validScores.length ? validScores : [5]} moves={totalMoves} edits={0} lang={lang} />
     </div>
   )

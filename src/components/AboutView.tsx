@@ -57,11 +57,11 @@ export function AboutView({ lang }: Props) {
         <div style={{ background: 'linear-gradient(135deg,#fef9ec,#fdf3d0)', border: '1px solid rgba(233,196,106,0.3)', borderRadius: 12, padding: '0.75rem 1.1rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
           <div style={{ width: 40, height: 40, borderRadius: 10, background: 'rgba(233,196,106,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontWeight: 800, fontSize: '1rem', color: '#92400e' }}>🌊</div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#92400e' }}>人生棋局视角 · 宜流动</div>
-            <div style={{ fontSize: '0.8rem', color: '#a16207', marginTop: 2 }}>情绪波动较大，适合进行自由书写与释怀。</div>
+            <div style={{ fontWeight: 700, fontSize: '0.88rem', color: '#92400e' }}>{isZh ? '人生棋局视角 · 宜流动' : 'Go Board Perspective · Flow'}</div>
+            <div style={{ fontSize: '0.8rem', color: '#a16207', marginTop: 2 }}>{isZh ? '情绪波动较大，适合进行自由书写与释怀。' : 'High emotional volatility, suitable for free writing and release.'}</div>
           </div>
         </div>
-        <EventWorkspace inline onSave={handleEventSave} />
+        <EventWorkspace inline lang={lang} onSave={handleEventSave} />
       </div>
       {expandedSection === 'recall' && (
         <div style={{ marginBottom: '2.5rem' }}>

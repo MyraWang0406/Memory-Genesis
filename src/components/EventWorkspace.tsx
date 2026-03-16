@@ -3,6 +3,8 @@ import type { MemoryEvent, RoleProfile, WhatIfBranch } from '../data/memoryEvent
 import { genId } from '../utils/id'
 import { RoleCard } from './RoleCard'
 import { WhatIfSimulator } from './WhatIfSimulator'
+import type { Lang } from '../i18n'
+import { getText } from '../i18n'
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function pad2(n: number) { return String(n).padStart(2, '0') }
@@ -57,26 +59,28 @@ function DTField({ label, value, onChange, min, max }: { label: string; value: n
   )
 }
 
-function DateTimeRangePicker({ start, end, onStartChange, onEndChange }: {
+function DateTimeRangePicker({ start, end, onStartChange, onEndChange, lang }: {
   start: DT; end: DT;
   onStartChange: (d: DT) => void;
   onEndChange: (d: DT) => void;
+  lang: Lang;
 }) {
+  const T = getText(lang)
   const update = (dt: DT, field: keyof DT, v: number, cb: (d: DT) => void) => cb({ ...dt, [field]: v })
   const limits: Record<keyof DT, [number, number]> = { year: [2000, 2099], month: [1, 12], day: [1, 31], hour: [0, 23], minute: [0, 59] }
-  const labels: Record<keyof DT, string> = { year: '年', month: '月', day: '日', hour: '时', minute: '分' }
+  const labels: Record<keyof DT, string> = { year: T.ewYear, month: T.ewMonth, day: T.ewDay, hour: T.ewHour, minute: T.ewMinute }
   const fields: (keyof DT)[] = ['year', 'month', 'day', 'hour', 'minute']
   return (
     <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', alignItems: 'flex-end' }}>
       <div>
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 6, textTransform: 'uppercase' }}>开始时间</div>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 6, textTransform: 'uppercase' }}>{T.ewStartTime}</div>
         <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end' }}>
           {fields.map(f => <DTField key={f} label={labels[f]} value={start[f]} min={limits[f][0]} max={limits[f][1]} onChange={v => update(start, f, v, onStartChange)} />)}
         </div>
       </div>
       <div style={{ fontSize: '1rem', color: 'var(--text-muted)', paddingBottom: 8 }}>→</div>
       <div>
-        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 6, textTransform: 'uppercase' }}>结束时间</div>
+        <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', marginBottom: 6, textTransform: 'uppercase' }}>{T.ewEndTime}</div>
         <div style={{ display: 'flex', gap: 6, alignItems: 'flex-end' }}>
           {fields.map(f => <DTField key={f} label={labels[f]} value={end[f]} min={limits[f][0]} max={limits[f][1]} onChange={v => update(end, f, v, onEndChange)} />)}
         </div>
@@ -90,9 +94,11 @@ interface Props {
   onSave?: (ev: MemoryEvent) => void
   onClose?: () => void
   inline?: boolean
+  lang: Lang
 }
 
-export function EventWorkspace({ onSave, onClose, inline }: Props) {
+export function EventWorkspace({ onSave, onClose, inline, lang }: Props) {
+  const T = getText(lang)
   const n = nowDt()
   const [start, setStart] = useState<DT>(n)
   const [end, setEnd] = useState<DT>({ ...n, hour: n.hour + 1 })
@@ -175,12 +181,12 @@ export function EventWorkspace({ onSave, onClose, inline }: Props) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
             {/* 事件类型选择 */}
             <div>
-              <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>事件类型</label>
+              <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>{T.ewTypeLabel}</label>
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 {[
-                  { id: 'memory' as const, label: '🧠 记忆记录', desc: '日常事件备忘' },
-                  { id: 'whatif' as const, label: '🔀 决策推演', desc: '需要推演不同路径' },
-                  { id: 'reflection' as const, label: '⚡ 复盘反思', desc: '已发生，需要复盘' },
+                  { id: 'memory' as const, label: T.ewTypeMemory, desc: T.ewTypeMemoryDesc },
+                  { id: 'whatif' as const, label: T.ewTypeWhatIf, desc: T.ewTypeWhatIfDesc },
+                  { id: 'reflection' as const, label: T.ewTypeReflection, desc: T.ewTypeReflectionDesc },
                 ].map(({ id, label, desc }) => (
                   <button key={id} type="button" onClick={() => setEventType(id)}
                     style={{
@@ -200,19 +206,19 @@ export function EventWorkspace({ onSave, onClose, inline }: Props) {
             </div>
             
             <div style={{ background: 'rgba(59,130,246,0.04)', border: '1px solid rgba(59,130,246,0.12)', borderRadius: 12, padding: '1rem' }}>
-              <DateTimeRangePicker start={start} end={end} onStartChange={setStart} onEndChange={setEnd} />
+              <DateTimeRangePicker start={start} end={end} onStartChange={setStart} onEndChange={setEnd} lang={lang} />
               <div style={{ marginTop: '0.5rem', fontSize: '0.75rem', color: 'var(--text-muted)' }}>
                 {dtToISO(start)} → {dtToISO(end)}
               </div>
             </div>
             <div>
-              <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>事件标题（可选）</label>
-              <input value={title} onChange={e => setTitle(e.target.value)} placeholder="简短描述这个事件"
+              <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: 6 }}>{T.ewTitleLabel}</label>
+              <input value={title} onChange={e => setTitle(e.target.value)} placeholder={T.ewTitlePlaceholder}
                 style={{ width: '100%', fontSize: '0.9rem', padding: '0.55rem 0.75rem', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 8, fontFamily: 'inherit', boxSizing: 'border-box' }} />
             </div>
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                <label style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>事件备忘 *</label>
+                <label style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>{T.ewMemoLabel}</label>
                 <button type="button" onClick={handleVoiceInput}
                   style={{
                     padding: '0.3rem 0.6rem',
@@ -226,18 +232,18 @@ export function EventWorkspace({ onSave, onClose, inline }: Props) {
                     alignItems: 'center',
                     gap: '0.3rem',
                   }}>
-                  {isRecording ? '⏹ 停止录音' : '🎤 语音输入'}
+                  {isRecording ? T.ewVoiceStop : T.ewVoiceInput}
                 </button>
               </div>
               <textarea value={memo} onChange={e => setMemo(e.target.value)} rows={6}
                 placeholder={
                   eventType === 'memory' 
-                    ? "今天和谁发生了什么事？\n这件事发生在什么场景下？\n涉及哪些角色、公司、关系？"
+                    ? T.ewMemoPlaceholder
                     : eventType === 'whatif'
-                    ? "描述当前面临的决策点：\n- 有哪些可选路径？\n- 涉及哪些角色和利益关系？\n- 你最担心什么？"
-                    : "描述已发生的事件：\n- 你当时的选择是什么？\n- 现在后悔什么？\n- 如果重来会怎么做？"
+                    ? (lang === 'zh' ? '如果当时我换一种做法…\n如果某个关键变量发生了变化…' : 'What if I did something else...\nWhat if a key variable changed...')
+                    : (lang === 'zh' ? '复盘：当时我的真实目标是什么？\n哪些环节判断失误了？\n下次如何优化？' : 'Review: What was my real goal?\nWhich parts were misjudged?\nHow to optimize next time?')
                 }
-                style={{ width: '100%', fontSize: '0.9rem', padding: '0.65rem 0.85rem', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 10, fontFamily: 'inherit', lineHeight: 1.65, resize: 'vertical', boxSizing: 'border-box', background: '#fafafa' }} />
+                style={{ width: '100%', fontSize: '0.9rem', padding: '0.75rem', border: '1px solid rgba(0,0,0,0.1)', borderRadius: 10, resize: 'vertical', fontFamily: 'inherit', lineHeight: 1.6, boxSizing: 'border-box' }} />
             </div>
             
             {/* 决策推演类型的额外提示 */}

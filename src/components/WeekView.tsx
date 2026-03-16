@@ -101,7 +101,7 @@ export function WeekView({ date, lang, profileId }: Props) {
                 )}
                 {rec?.timeline && rec.timeline.length > 0 && (
                   <div style={{ fontSize: '0.65rem', color: 'var(--text-muted)' }}>
-                    {rec.timeline.length} 条记录
+                    {rec.timeline.length} {lang === 'zh' ? '条记录' : 'records'}
                   </div>
                 )}
               </div>
@@ -112,7 +112,7 @@ export function WeekView({ date, lang, profileId }: Props) {
 
       <EmotionRecord score={draftMood} lang={lang} onChange={setDraftMood} />
       <MemoWhatIf entries={draftTimeline} lang={lang} onEntriesChange={setDraftTimeline} hasProfile={false} />
-      <MemoEventList startDate={format(weekStart, 'yyyy-MM-dd')} endDate={format(addDays(weekStart,6), 'yyyy-MM-dd')} label="本周事件" />
+      <MemoEventList startDate={format(weekStart, 'yyyy-MM-dd')} endDate={format(addDays(weekStart,6), 'yyyy-MM-dd')} label={lang === 'zh' ? '本周事件' : 'Weekly Events'} lang={lang} />
       <GoBoard scores={validScores.length ? validScores : [5]} moves={totalMoves} edits={0} lang={lang} />
     </div>
   )

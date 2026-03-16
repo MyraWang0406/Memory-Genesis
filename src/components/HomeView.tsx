@@ -66,7 +66,7 @@ export function HomeView({ lang, profileId, onDimensionChange, onNeedProfile }: 
         </div>
       </div>
 
-      <EventWorkspace inline onSave={(ev) => { addEvent(ev) }} />
+      <EventWorkspace inline lang={lang} onSave={(ev) => { addEvent(ev) }} />
     </div>
   )
 }
