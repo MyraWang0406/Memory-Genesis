@@ -417,7 +417,7 @@ export const t = {
     ewVoiceStop: '⏹ Stop Recording',
     ewMemoPlaceholder: 'What happened today and with whom?\nIn what context did this happen?\nWhich roles, companies, or relationships were involved?',
   },
-};nst
+};
 
 export function getText(lang: Lang) {
   return t[lang]
