@@ -37,9 +37,9 @@ export function AboutView({ lang }: Props) {
         <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(139,92,246,0.2)', borderLeft: '4px solid #8b5cf6', borderRadius: 14, padding: '1.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', cursor: 'pointer' }} onClick={() => setExpandedSection(expandedSection === 'understand' ? null : 'understand')}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>🎭</div>
-            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Now | 理解结构' : 'Now | Understand Structure'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '看清当下：谁在影响这件事，他们各自怎么想' : 'Clarify now: What are the key factors, and how they interact with others.'}</p></div>
+            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Now | 理解结构' : 'Now | Grasp Context'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '看清当下：谁在影响这件事，他们各自怎么想' : 'Clarify now: What are the key factors, and how they interact with others.'}</p></div>
           </div>
-          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '识别生态位、角色关系与利益链' : 'Map the stakeholders, relationships, and entangled stakes.'}</li><li>{isZh ? '推演自己、对方与第三方的视角' : 'Simulate perspectives from participant, stakeholders, and neutral observer.'}</li></ul>
+          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '识别生态位、角色关系与利益链' : 'Map the entangled stakes of stakeholders'}</li><li>{isZh ? '推演自己、对方与第三方的视角' : 'Simulate perspectives from participant and observer.'}</li></ul>
         </div>
         <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(34,197,94,0.2)', borderLeft: '4px solid #22c55e', borderRadius: 14, padding: '1.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
@@ -71,7 +71,7 @@ export function AboutView({ lang }: Props) {
           <SimilarityRecallPanel recalls={SIMILARITY_RECALL} />
         </div>
       )}
-      {expandedSection === 'understand' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '🎭 理解结构' : '🎭 Understand Structure'}</h3><div style={{padding:'1.5rem',background:'var(--card-bg)',border:'1px solid #e5e7eb',borderRadius:12,textAlign:'center',color:'var(--text-muted)'}}>{isZh ? '在首页记录事件后，角色分析将显示在这里。' : 'Role analysis will appear here after recording events.'}</div></div>)}
+        {expandedSection === 'understand' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '🎭 理解结构' : '🎭 Grasp Context'}</h3><div style={{padding:'1.5rem',background:'var(--card-bg)',border:'1px solid #e5e7eb',borderRadius:12,textAlign:'center',color:'var(--text-muted)'}}>{isZh ? '在首页记录事件后，角色分析将显示在这里。' : 'Role analysis will appear here after recording events.'}</div></div>)}
     </div>
   )
 }

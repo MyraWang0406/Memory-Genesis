@@ -16,10 +16,10 @@ We believe that many life challenges stem from "inertia path dependency." By sys
 *   **Record Context**: Document key events, people, and situational details.
 *   **Emotional Recall**: Retrace the thread of what happened and explore if similar historical patterns or unresolved feelings exist.
 
-### 2. Understand Structure (Now)
+### 2. Grasp Context (Now)
 *   **Factor Analysis**: Clarify key factors and how they interact with others.
-*   **Stakeholder Mapping**: Map the stakeholders, relationships, and entangled stakes involved in any situation.
-*   **Perspective Simulation**: Simulate perspectives from participants, stakeholders, and neutral observers to gain a 360-degree view.
+*   **Stakeholder Mapping**: Map the entangled stakes of stakeholders involved in any situation.
+*   **Perspective Simulation**: Simulate perspectives from participant and observer to gain a 360-degree view.
 
 ### 3. Conduct Align (After)
 *   **Goal Calibration**: Look ahead to what you truly want and align your actions accordingly.
@@ -32,7 +32,7 @@ We believe that many life challenges stem from "inertia path dependency." By sys
 
 1.  **Input Event**: Record what happened in your daily life.
 2.  **Look Back**: Recall similar past experiences and emotional triggers.
-3.  **Understand**: Analyze roles, motives, and the underlying structure of the event.
+3.  **Grasp Context**: Analyze roles, motives, and the underlying structure of the event.
 4.  **Calibrate**: Clarify your true desires and ultimate objectives.
 5.  **Respond**: Formulate optimized next steps and future guidelines.
 
