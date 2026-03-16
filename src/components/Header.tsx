@@ -27,6 +27,7 @@ export function Header({ dimension, onDimensionChange, lang, onLangChange, date,
   const T = getText(lang)
   const dims: Dimension[] = ['about', 'profile', 'day', 'week', 'month', 'quarter', 'year', 'lifetime']
   const dimLabels: Record<Dimension, string> = {
+    home: lang === 'zh' ? '首页' : 'Home',
     about: lang === 'zh' ? 'About Me' : 'About Me',
     profile: T.dimProfile,
     day: lang === 'zh' ? '日' : 'Day',
@@ -37,6 +38,7 @@ export function Header({ dimension, onDimensionChange, lang, onLangChange, date,
     lifetime: lang === 'zh' ? '一生' : 'Lifetime',
   }
   const dimIcons: Record<Dimension, string> = {
+    home: '🏠',
     about: '',
     profile: '',
     day: '📅',

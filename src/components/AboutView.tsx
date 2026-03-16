@@ -2,8 +2,9 @@ import { useState } from 'react'
 import type { Lang } from '../i18n'
 import { EventWorkspace } from './EventWorkspace'
 import { SimilarityRecallPanel } from './SimilarityRecallPanel'
-import type { MemoryEvent } from '../types'
-import { getEvents } from '../services/eventStore'
+import type { MemoryEvent } from '../data/memoryEvents'
+import { SIMILARITY_RECALL } from '../data/memoryEvents'
+import { addEvent } from '../services/eventStore'
 
 interface Props {
   lang: Lang
@@ -12,8 +13,9 @@ interface Props {
 export function AboutView({ lang }: Props) {
   const isZh = lang === 'zh'
   const [expandedSection, setExpandedSection] = useState<'recall' | 'understand' | null>(null)
-  const events = getEvents()
-  const handleEventSave = (ev: MemoryEvent) => {}
+  const handleEventSave = (ev: MemoryEvent) => {
+    addEvent(ev)
+  }
   return (
     <div style={{ maxWidth: 900, margin: '0 auto' }}>
       <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #0f2d4a 100%)', borderRadius: 20, padding: '2.5rem 2rem', marginBottom: '2.5rem', position: 'relative', overflow: 'hidden' }}>
@@ -61,7 +63,14 @@ export function AboutView({ lang }: Props) {
         </div>
         <EventWorkspace inline onSave={handleEventSave} />
       </div>
-      {expandedSection === 'recall' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '📖 回看过去' : '📖 Look Back'}</h3><SimilarityRecallPanel recalls={events.map(e=>({date:e.date,title:e.title,content:e.content}))} /></div>)}
+      {expandedSection === 'recall' && (
+        <div style={{ marginBottom: '2.5rem' }}>
+          <h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>
+            {isZh ? '📖 回看过去' : '📖 Look Back'}
+          </h3>
+          <SimilarityRecallPanel recalls={SIMILARITY_RECALL} />
+        </div>
+      )}
       {expandedSection === 'understand' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '🎭 理解结构' : '🎭 Understand Structure'}</h3><div style={{padding:'1.5rem',background:'var(--card-bg)',border:'1px solid #e5e7eb',borderRadius:12,textAlign:'center',color:'var(--text-muted)'}}>{isZh ? '在首页记录事件后，角色分析将显示在这里。' : 'Role analysis will appear here after recording events on the homepage.'}</div></div>)}
     </div>
   )
