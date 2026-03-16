@@ -1,0 +1,4 @@
+# Dependencies to be installed for future development
+# requests>=2.31.0  # For EverMemOS/LLM API calls
+# sqlite3>=2.6.0     # For backend memory storage
+# flask>=2.3.3       # For future backend server
