@@ -25,7 +25,7 @@ const KLINE_VIEWS = [
 
 export function Header({ dimension, onDimensionChange, lang, onLangChange, date, onDateChange }: Props) {
   const T = getText(lang)
-  const dims: Dimension[] = ['home', 'about', 'profile', 'day', 'week', 'month', 'quarter', 'year', 'lifetime']
+  const dims: Dimension[] = ['about', 'profile', 'day', 'week', 'month', 'quarter', 'year', 'lifetime']
   const dimLabels: Record<Dimension, string> = {
     home: lang === 'zh' ? '首页' : 'Home',
     about: lang === 'zh' ? 'About Me' : 'About Me',
@@ -39,7 +39,7 @@ export function Header({ dimension, onDimensionChange, lang, onLangChange, date,
   }
   const dimIcons: Record<Dimension, string> = {
     home: '🏠',
-    about: '',
+    about: '🏠',
     profile: '',
     day: '📅',
     week: '🗓️',

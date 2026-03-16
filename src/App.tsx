@@ -16,7 +16,7 @@ import { LifetimeView } from './components/LifetimeView'
 import { LifeKlineChart } from './components/LifeKlineChart'
 
 export default function App() {
-  const [dimension, setDimensionState] = useState<Dimension>('about' as Dimension)
+  const [dimension, setDimensionState] = useState<Dimension>('about')
   const [date, setDate] = useState(() => new Date())
   const [lang, setLangState] = useState<Lang>(loadLang)
   const [showLoginPrompt, setShowLoginPrompt] = useState(false)

@@ -30,23 +30,23 @@ export function AboutView({ lang }: Props) {
         <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(59,130,246,0.2)', borderLeft: '4px solid #3b82f6', borderRadius: 14, padding: '1.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', cursor: 'pointer' }} onClick={() => setExpandedSection(expandedSection === 'recall' ? null : 'recall')}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>⏮️</div>
-            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Before | 回看过去' : 'Before | Trace Back'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '回到当时：发生了什么，这类事以前出现过吗' : 'Go back: What happened, has this occurred before?'}</p></div>
+            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Before | 回看过去' : 'Before | Trace Back'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '回到当时：发生了什么，这类事以前出现过吗' : 'Retrace the thread: What happened, has this occurred before?'}</p></div>
           </div>
-          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '记录关键事件、人物与情境' : 'Record key events, people & context'}</li><li>{isZh ? '调取相似历史与未释怀片段' : 'Recall similar history & unresolved moments'}</li></ul>
+          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '记录关键事件、人物与情境' : 'Record key events, people & context'}</li><li>{isZh ? '调取相似历史与未释怀片段' : 'Recall similar history & unresolved feelings'}</li></ul>
         </div>
         <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(139,92,246,0.2)', borderLeft: '4px solid #8b5cf6', borderRadius: 14, padding: '1.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', cursor: 'pointer' }} onClick={() => setExpandedSection(expandedSection === 'understand' ? null : 'understand')}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>🎭</div>
-            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Now | 理解结构' : 'Now | Understand Structure'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '看清当下：谁在影响这件事，他们各自怎么想' : 'Clarify now: Who influences this, what do they think?'}</p></div>
+            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'Now | 理解结构' : 'Now | Understand Structure'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '看清当下：谁在影响这件事，他们各自怎么想' : 'Clarify now: What are the key factors, and how they interact with others.'}</p></div>
           </div>
-          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '识别生态位、角色关系与利益链' : 'Identify ecology, relationships & interests'}</li><li>{isZh ? '推演自己、对方与第三方的视角' : 'Simulate self, other & third-party views'}</li></ul>
+          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '识别生态位、角色关系与利益链' : 'Map the stakeholders, relationships, and entangled stakes.'}</li><li>{isZh ? '推演自己、对方与第三方的视角' : 'Simulate perspectives from participant, stakeholders, and neutral observer.'}</li></ul>
         </div>
         <div style={{ background: 'var(--card-bg)', border: '1px solid rgba(34,197,94,0.2)', borderLeft: '4px solid #22c55e', borderRadius: 14, padding: '1.5rem', boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', marginBottom: '0.75rem' }}>
             <div style={{ fontSize: '1.8rem', flexShrink: 0 }}>🎯</div>
-            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'After | 目标校准' : 'After | Goal Calibration'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '面向以后：用户真正想要什么，未来如何优化' : 'Look ahead: What users truly want, how to optimize future?'}</p></div>
+            <div><h2 style={{ margin: 0, fontSize: '1rem', fontWeight: 700, color: 'var(--text)' }}>{isZh ? 'After | 目标校准' : 'After | Conduct Align'}</h2><p style={{ margin: '0.2rem 0 0', fontSize: '0.75rem', color: 'var(--text-muted)' }}>{isZh ? '面向以后：用户真正想要什么，未来如何优化' : 'Look ahead: What they truly want, how align actions accordingly?'} </p></div>
           </div>
-          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '区分表意、底层动机与真实目的' : 'Distinguish intent, driver & ultimate goal'}</li><li>{isZh ? '生成短期优化与长期改善建议' : 'Generate short-term optimizations & long-term improvements'}</li></ul>
+          <ul style={{ margin: '0.75rem 0 0', paddingLeft: '1.25rem', fontSize: '0.85rem', color: 'var(--text)', lineHeight: 1.6 }}><li>{isZh ? '区分表意、底层动机与真实目的' : 'Clarify intent, drivers, and ultimate goals.'}</li><li>{isZh ? '生成短期优化与长期改善建议' : 'Optimize short-term action and strive for long-term goals.'}</li></ul>
         </div>
       </div>
       <div style={{ marginBottom: '2.5rem', background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: 14, padding: '1.5rem' }}><p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--text)', lineHeight: 1.8, fontWeight: 500 }}>{isZh ? '因果本相连，知行常断档：从过往遗憾中看见惯性路径依赖，拆解关键环节、补齐认知差，用当下行动校准未来结果。' : 'Uncover repeated patterns in past regrets, grasp former drivers behind choices, and align your future choices with your true goals.'}</p></div>
@@ -71,7 +71,7 @@ export function AboutView({ lang }: Props) {
           <SimilarityRecallPanel recalls={SIMILARITY_RECALL} />
         </div>
       )}
-      {expandedSection === 'understand' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '🎭 理解结构' : '🎭 Understand Structure'}</h3><div style={{padding:'1.5rem',background:'var(--card-bg)',border:'1px solid #e5e7eb',borderRadius:12,textAlign:'center',color:'var(--text-muted)'}}>{isZh ? '在首页记录事件后，角色分析将显示在这里。' : 'Role analysis will appear here after recording events on the homepage.'}</div></div>)}
+      {expandedSection === 'understand' && (<div style={{ marginBottom: '2.5rem' }}><h3 style={{ fontSize: '1rem', fontWeight: 700, color: 'var(--text)', marginBottom: '1rem' }}>{isZh ? '🎭 理解结构' : '🎭 Understand Structure'}</h3><div style={{padding:'1.5rem',background:'var(--card-bg)',border:'1px solid #e5e7eb',borderRadius:12,textAlign:'center',color:'var(--text-muted)'}}>{isZh ? '在首页记录事件后，角色分析将显示在这里。' : 'Role analysis will appear here after recording events.'}</div></div>)}
     </div>
   )
 }
