@@ -1,32 +1,34 @@
 # Memory-Genesis
-🧠 AI Multidimensional Memory Visualization System
+🧠 AI Multidimensional Memory Visualization System  
 🚀 Powered by EverMemOS Architecture
 
 ## 📖 Project Introduction
-Memory-Genesis is a visualized frontend interface for an AI multidimensional memory system.
-It is used to display the construction process of memory and the logic of intelligent memory retrieval.
+Memory-Genesis is a visualized frontend interface for an AI multidimensional memory system, designed to display the construction process of memory and the logic of intelligent memory retrieval.  
 
-This demo refers to the design specifications of **EverMemOS** (https://github.com/EverMind-AI/EverMemOS) and will be further connected to the official EverMemOS memory system in future updates.
+This demo adheres to the design specifications of EverMemOS (https://github.com/EverMind-AI/EverMemOS) and will be further integrated with the official EverMemOS memory system in future iterations to enable real memory operation capabilities.
 
 ## 🔧 System Architecture
-```mermaid
-graph LR
-    A[User Dialogue] --> B[Memory Generation]
-    B --> C[Memory Storage]
-    C --> D[Memory Retrieval]
-    D --> E[Dialogue Response]
+### Workflow
+User Dialogue → Memory Generation → Memory Storage → Memory Retrieval → Dialogue Response
 
-✨ Features
-Visual dialogue interface
-Multidimensional memory panel display
-Simulated memory storage and retrieval process
-Simple and intuitive UI interaction
-Based on EverMemOS memory architecture design
-Static HTML demo (no backend required)
-🖥 How to Use
-This is a static frontend demo - just open index.html directly in your browser to run it.
-📌 Future Plan
-Further integrate with EverMemOS official API
-Implement real memory storage and retrieval
-Add dynamic AI dialogue capabilities
-Optimize multidimensional memory visualization
+## ✨ Core Features
+- Intuitive visual dialogue interface for memory interaction
+- Multidimensional memory panel to display structured memory units
+- Simulated memory storage and retrieval process (aligned with EverMemOS schema)
+- Lightweight static HTML implementation (no backend dependency)
+- Deployed on Cloudflare Pages for fast global access
+
+## 🖥 Quick Start
+This is a static frontend demo with zero backend requirements:
+1. Clone the repository: `git clone https://github.com/MyraWang0406/Memory-Genesis.git`
+2. Open `index.html` directly in any modern browser
+3. Interact with the interface to preview memory visualization
+
+## 📌 Future Roadmap (EverMemOS Integration)
+- Integrate with EverMemOS official API for real memory generation/retrieval
+- Support dynamic memory updates based on user dialogue
+- Add quantitative evaluation metrics (aligned with EverMemOS benchmarks)
+- Optimize multidimensional memory visualization with EverMemOS data schema
+
+## 📄 License
+This project is open-source under the Apache 2.0 License (consistent with EverMemOS licensing).
