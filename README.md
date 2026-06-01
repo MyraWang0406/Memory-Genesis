@@ -1,3 +1,123 @@
+# Memory Genesis: Longitudinal Decision Memory Prototype
+
+Memory Genesis is a research prototype for exploring how people reconstruct, reinterpret, and reuse past decisions over time.
+
+The project focuses on decision memory, temporal reflection, and how AI systems can help users revisit earlier assumptions, emotions, roles, events, and outcomes.
+
+## Project Information
+
+| Item | Description |
+|---|---|
+| Status | Research prototype / Competition artifact |
+| Repository | https://github.com/MyraWang0406/Memory-Genesis |
+| Live Demo | https://what-if.myrawzm0406.online/ |
+| Research Area | Human-AI Collaboration, Reflective AI, Decision Memory, HCI |
+| Main Methods | LLM-assisted prototyping, role-based reflection, temporal decision reconstruction |
+| Intended Use | Research demonstration, not production deployment |
+
+## Research Motivation
+
+Many AI assistants focus on answering the current user request. However, real decision-making is often longitudinal. People make decisions based on past experiences, partial memories, unresolved emotions, previous assumptions, and later reinterpretations.
+
+A key problem is that past decisions are often remembered incompletely. People may forget why they made a choice, what assumptions they held at the time, what alternatives they rejected, and how their later interpretation changed.
+
+Memory Genesis explores how AI systems can support longitudinal reflection by helping users reconstruct past decisions and inspect how their understanding changes over time.
+
+## Research Questions
+
+RQ1. How can AI systems help users reconstruct past decisions in terms of roles, events, assumptions, emotions, and outcomes?
+
+RQ2. How can longitudinal decision memory support reinterpretation without overwriting the user’s original perspective?
+
+RQ3. How can AI-assisted reflection preserve user agency while helping users compare past and present interpretations?
+
+## System Overview
+
+Memory Genesis helps users revisit decision-related experiences and transform them into structured memory records.
+
+The system explores how personal narratives can be organized into:
+
+- key actors and roles
+- important events
+- assumptions at the time of decision
+- emotional context
+- possible causal relations
+- alternative interpretations
+- later reflections
+- unresolved questions
+
+## Core Features
+
+- Personal narrative input
+- Decision-memory structuring
+- Role and event extraction
+- Assumption and emotion mapping
+- Temporal reinterpretation support
+- Alternative reading of past events
+- Reflection-oriented output
+
+## Relationship to What-if
+
+Memory Genesis and What-if are related but not identical.
+
+- `What-if` focuses on pre-decision or in-decision reflection. It helps users explore alternative future paths before or during a complex decision.
+- `Memory Genesis` focuses on post-decision reflection. It helps users reconstruct and reinterpret earlier decisions after time has passed.
+
+Together, they form two sides of reflective AI:
+
+- before decision: scenario exploration and what-if reasoning
+- after decision: memory reconstruction and longitudinal reinterpretation
+
+## Research Contribution
+
+This prototype explores decision memory as an interaction design problem.
+
+The contribution is not only generating reflective text. The system investigates how AI can help users preserve and revisit the structure behind a past decision:
+
+- who was involved
+- what happened
+- what the user believed at that time
+- what alternatives were available
+- what changed later
+- how the meaning of the decision shifted over time
+
+## Evaluation Plan
+
+This prototype can be evaluated through:
+
+- reflection depth
+- perceived usefulness of memory reconstruction
+- clarity of role and event organization
+- ability to surface forgotten assumptions
+- user control over reinterpretation
+- perceived decision ownership
+- cognitive load during reflection
+
+## Current Limitations
+
+- The current version is a research prototype, not a clinical or therapeutic tool.
+- The system does not claim to recover objective truth from memory.
+- AI-generated interpretations may be incomplete or biased.
+- The prototype has not yet been evaluated through a formal longitudinal user study.
+- Further work is needed to support versioned memory records and user-controlled correction.
+
+## Tech Stack
+
+- Frontend: Web-based prototype
+- Deployment: Cloudflare Pages
+- Prototype logic: LLM-assisted reflective workflow
+- Data: User-provided narrative input and demo scenarios
+
+## Award
+
+This project received a Memorial Award in the Memory Genesis Competition 2026.
+
+## License
+
+This repository is for research and portfolio demonstration purposes.
+
+
+
 # 🧠 Memory Genesis
 
 > A personal life coach agent that remembers your regrets, patterns, and life context — so you can stop blaming your past self and move forward with clarity.
